@@ -4,11 +4,11 @@ import com.middlend.middlend.exception.MiddlendException;
 import com.middlend.middlend.exception.ProductException;
 import com.middlend.middlend.model.Product;
 import com.middlend.middlend.repository.ProductRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +31,7 @@ public class MiddlendController {
 
 
     @PostMapping("/product")
-    public ResponseEntity<?> AddProductToInventory(@RequestBody Product product){
+    public ResponseEntity<?> AddProductToInventory(@Valid @RequestBody Product product){
         try{
             product.setDateAddedToInventory( new Date(System.currentTimeMillis()));
             productRepo.save(product);
