@@ -83,11 +83,11 @@ public class ProductException extends Exception {
     private static final long serialVersionUID = 1L;
 
 
-public static String NotFoundException(String id){
+    public static String NotFoundException(String id){
     return "product with id "+ id + " not found!";
 }
 
-public static String productAlreadyExist(){
+    public static String productAlreadyExist(){
         return "product with given name already exist in the inventory!";
     }
 

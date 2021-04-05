@@ -10,9 +10,6 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends MongoRepository<Product, String> {
 
-
-
-
     @Query("{'product' : ?0}")
-    public Optional<Product> findProductBy (String product);
+    public Optional<Product> findByProduct (String product);
 }

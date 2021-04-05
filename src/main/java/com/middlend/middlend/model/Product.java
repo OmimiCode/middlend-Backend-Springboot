@@ -1,13 +1,12 @@
 package com.middlend.middlend.model;
 
-import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,13 +17,21 @@ import java.util.Date;
 public class Product {
     @Id
     private String productId;
-
-    @NonNull
+    @NotNull
+    @NotBlank(message = "cant be blank")
+    @NotEmpty(message = "cant be empty")
     private String name;
 
-    @NotEmpty(message = "Description cnt b empty")
+    @NotNull
+    @NotBlank
+    @NotEmpty(message = "cant be empty")
     private String description;
+
+    @NotNull
+    @NotBlank
+    @NotEmpty(message = "cant be empty")
     private BigDecimal price;
+
     private Date DateAddedToInventory;
     private Date DateLastModified;
 
