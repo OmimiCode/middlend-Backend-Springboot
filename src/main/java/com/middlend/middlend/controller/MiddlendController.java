@@ -1,21 +1,17 @@
 package com.middlend.middlend.controller;
 
-import com.middlend.middlend.exception.MiddlendException;
 import com.middlend.middlend.exception.ProductException;
 import com.middlend.middlend.model.Product;
 import com.middlend.middlend.repository.ProductRepository;
-import com.middlend.middlend.service.ProductServices;
+import com.middlend.middlend.service.productServices.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.cache.CacheType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class MiddlendController {
@@ -65,7 +61,6 @@ public class MiddlendController {
     }catch (ProductException exception){
         return new ResponseEntity<>(exception.getMessage(),HttpStatus.NOT_FOUND);
     }
-
     }
 
 
