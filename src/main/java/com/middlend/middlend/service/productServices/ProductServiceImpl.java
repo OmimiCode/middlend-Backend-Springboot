@@ -4,7 +4,6 @@ import com.middlend.middlend.exception.ProductException;
 import com.middlend.middlend.model.Product;
 import com.middlend.middlend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 
 import javax.validation.ConstraintViolationException;
@@ -69,8 +68,8 @@ public class ProductServiceImpl implements ProductServices {
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        List<Product> products = productRepo.findAll();
+    public Collection<Product> getAllProducts() {
+        Collection<Product> products = productRepo.findAll();
         if(products.size()>0){
             return products;
         }else{

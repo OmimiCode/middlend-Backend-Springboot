@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import java.util.List;
+import java.util.Collection;
 
 @RestController
 public class MiddlendController {
@@ -22,7 +22,7 @@ public class MiddlendController {
 
     @GetMapping("/product")
     public ResponseEntity<?> getAllProducts(){
-        List<Product> productList = productServices.getAllProducts();
+        Collection<Product> productList = productServices.getAllProducts();
        return new ResponseEntity<>(productList, productList.size()>0 ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
