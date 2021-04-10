@@ -1,19 +1,23 @@
-package com.middlend.middlend.service.productServices;
+package com.middlend.middlend.service;
 
 import com.middlend.middlend.exception.ProductException;
 import com.middlend.middlend.model.Product;
 import com.middlend.middlend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import javax.validation.ConstraintViolationException;
 import java.util.*;
 
-
+@Service
 public class ProductServiceImpl implements ProductServices {
 
-    @Autowired
-    private ProductRepository productRepo;
+    private final ProductRepository productRepo;
+
+    public ProductServiceImpl(ProductRepository productRepo) {
+        this.productRepo = productRepo;
+    }
 
 
     @Override
@@ -68,8 +72,8 @@ public class ProductServiceImpl implements ProductServices {
     }
 
     @Override
-    public Collection<Product> getAllProducts() {
-        Collection<Product> products = productRepo.findAll();
+    public List<Product> getAllProducts() {
+        List<Product> products = productRepo.findAll();
         if(products.size()>0){
             return products;
         }else{
